@@ -1,0 +1,21 @@
+Form{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.login-btn{
+    margin-top: 10px;
+    text-align: center;
+    background-color: #1E2832;
+    border-color: #1E2832;
+    color: white;
+
+}
+.login-btn:hover{
+    background-color: rgb(179, 130, 72);
+    border-color: bisque;
+}
+.login-img{
+    width: 20%;
+    height: min-content;
+    margin-left: 20%;
+}

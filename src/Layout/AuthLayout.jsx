@@ -1,10 +1,17 @@
  import React from 'react'
  import CustomeNavbar from "../Components/User/Navbar/Navbar"
- export default function AuthLayout() {
-   return (
-     <div>
-        <CustomeNavbar/>
-     </div>
-   )
- }
- 
+ import { Outlet } from 'react-router-dom';
+export default function AuthLayout() {
+  return (
+    <>
+      <CustomeNavbar />
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
+}
+
+
+
+
