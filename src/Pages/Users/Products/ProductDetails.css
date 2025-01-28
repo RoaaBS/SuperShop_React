@@ -1,0 +1,23 @@
+.card {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+    box-shadow: rgba(105, 104, 103, 0.3) 0px 19px 38px, rgba(105, 104, 103, 0.3) 0px 15px 12px;
+    border-radius: 10px;
+  }
+.card .discount{
+    color: red;
+}
+  .card-img-top {
+    object-fit: cover; 
+    height: 350px; 
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; 
+  }

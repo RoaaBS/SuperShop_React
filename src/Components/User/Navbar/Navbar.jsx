@@ -7,12 +7,12 @@ export default function CustomeNavbar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">CORAL</Navbar.Brand>
+        <Navbar.Brand href="#home">Super Shop</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link  as={Link} to={'/login'}>Login</Nav.Link>
-            <Nav.Link as={Link} to={'/register'}>Register</Nav.Link>
+            <Nav.Link  as={Link} to={'/categories'}>Category</Nav.Link>
+            <Nav.Link as={Link} to={'/products'}>Product</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
