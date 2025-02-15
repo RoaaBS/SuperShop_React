@@ -1,0 +1,44 @@
+.headerImage{
+    padding-left: 40%;
+    padding-bottom: 10px;
+}
+.button{
+    background-color: rgb(26, 18, 135);
+    color: white;
+    font-size: 20px;
+    padding-left: 33%;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.title{
+    margin-left: 30%;
+}
+.button:hover {
+    background-color: rgb(248, 248, 248);
+    color: rgb(10, 5, 92);
+  }
+  
+.cardimgtop {
+    width: 100%;
+    max-height: 200px; /* Adjust this value to make the image smaller */
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+  
+  .card {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: rgba(105, 104, 103, 0.3) 0px 19px 38px, rgba(105, 104, 103, 0.3) 0px 15px 12px;
+    border-radius: 10px;
+  }
+  
+  .cardBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  

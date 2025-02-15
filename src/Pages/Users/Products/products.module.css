@@ -1,0 +1,48 @@
+.btn{
+  
+    background-color: rgb(26, 18, 135);
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  .btn:hover{
+    background-color:rgb(249, 249, 247);
+    color:rgb(25, 39, 196);
+    border-color: rgb(25, 39, 196);
+    border-radius: 5px;
+    border-style: solid;
+  }
+  .cardimgtop {
+    width: 100%;
+    max-height: 200px; /* Adjust this value to make the image smaller */
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+  .headerImage{
+    padding-left: 40%;
+    padding-bottom: 10px;
+  }
+  
+  .card {
+    height: 350px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: rgba(105, 104, 103, 0.3) 0px 19px 38px, rgba(105, 104, 103, 0.3) 0px 15px 12px;
+    border-radius: 10px;
+  }
+.title{
+    font-size: 14px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    font-style: unset;
+}
+.cardtitles{
+  font-size: 15px;
+}
+

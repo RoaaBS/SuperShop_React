@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import styles from './products.module.css'
+import img from '../../../assets/p.png'
 export default function CategoryProduct() {
     const {categoryId}=useParams();
     const [products, setProducts] = useState([{}]);
@@ -27,22 +29,26 @@ export default function CategoryProduct() {
     if (isLoading) {
       return <h2>Loading..</h2>;
     }
+    if (products.length === 0) {
+      return <h2 className='m-4'>No products available in this category.</h2>;
+    }
   return (
    
     < div className="category container  mt-4">
+      <img src={img}/>
 <div className="row">
   {products.map((product) => (
     <div className="col-md-3 mb-4" key={product._id}>
-      <Card className="card">
+      <Card className={styles.card}>
         <Card.Img
           variant="top"
           src={product.mainImage.secure_url}
           alt={product.name}
-          className="card-img-top"
+          className={styles.cardimgtop}
         />
-        <Card.Body className="card-body">
-          <Card.Title>{product.name}</Card.Title>
-          <Link to={`/products/${product._id}`} className="btn">
+        <Card.Body className={styles.title}>
+          <Card.Title className={styles.cardtitles}>{product.name}</Card.Title>
+          <Link to={`/products/${product._id}`} className={styles.btn}>
             Details
           </Link>
         </Card.Body>

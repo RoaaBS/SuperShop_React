@@ -1,0 +1,30 @@
+.NavbarBrand {
+    background-color: #030355 !important; /* Blue background */
+    color: white !important; /* White text color */
+  }
+  
+  .NavbarBrand .navbar-brand {
+    color: white !important; /* White text color for the brand */
+  }
+  
+  .NavbarBrand .navbar-toggler-icon {
+    background-color: white !important; /* White toggler icon */
+  }
+  
+  .NavbarBrand .nav-link {
+    color: white !important; /* White color for nav links */
+  }
+  
+  .NavbarBrand .nav-link:hover {
+    color: #f0f0f0 !important; /* Slightly lighter color on hover */
+  }
+  
+  .NavbarBrand .dropdown-item {
+    color: white !important; /* White text color for dropdown items */
+  }
+  
+  .NavbarBrand .dropdown-item:hover {
+    background-color: #3333FF !important; /* Slightly darker blue on hover */
+    color: white !important; /* Keep text color white on hover */
+  }
+  
