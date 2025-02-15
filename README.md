@@ -16,4 +16,5 @@ SuperShop is a feature-rich e-commerce web application built using React. It pro
 - **Logout**: Secure logout functionality.
 - **Send Code**: Option to send verification codes for actions like account recovery.
 
-![Cover Image](assets/images/cover.jpg)
+![Cover Image](src/assets/images/cover.jpg)
+
