@@ -46,3 +46,50 @@
   font-size: 15px;
 }
 
+
+
+
+.pagination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 10px;
+}
+
+.page_item {
+  margin: 0 5px;
+}
+
+.page_link {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.page_link:hover {
+  background-color: rgb(26, 18, 135);
+  color: white;
+}
+
+.active .page_link {
+  background-color:rgb(26, 18, 135);
+  color: white;
+  border-color: rgb(26, 18, 135);
+}
+
+.prev_link,
+.next_link {
+  padding: 8px 12px;
+  color: rgb(26, 18, 135);
+  text-decoration: none;
+}
+
+.prev_link:hover,
+.next_link:hover {
+  text-decoration: underline;
+}
+
+

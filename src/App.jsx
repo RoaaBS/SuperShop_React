@@ -14,13 +14,14 @@ import ProtectedRoute from './Components/User/ProtectedRoute';
 import CartContextProvider from './Components/User/context/cartContext';
 import Profile from './Pages/Users/Profile/Profile';
 import Info from './Pages/Users/Profile/Info';
-import Orders from './Pages/Users/Profile/Orders';
 import  UserContextProvider  from './Components/User/context/UserContext';
 import Image from './Pages/Users/Profile/Image';
 import Login from './Pages/Users/Login/Login';
 import Register from './Pages/Users/Register/Register';
 import AuthProtectedRouter from './Components/User/AuthProtectedRouter';
 import Forgotpass from './Pages/Users/ForgotPassword/Forgotpass';
+import Orders from './Pages/Users/Order/Orders';
+import ViewOrders from './Pages/Users/Profile/ViewOrders'
 
 function App() {
   const router = createBrowserRouter([
@@ -81,6 +82,10 @@ function App() {
           element: <Cart />
         },
         {
+         path:"order",
+         element:<Orders/>
+        },
+        {
           path: "profile", // Profile page
           element: <Profile />,
           children: [
@@ -90,7 +95,7 @@ function App() {
             },
             {
               path: "orders",
-              element: <Orders />
+              element: <ViewOrders />
             },
             {
               path: "image",

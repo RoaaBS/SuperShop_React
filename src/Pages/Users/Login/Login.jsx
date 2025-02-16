@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './Login.css';
+import style from'./Login.module.css';
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -56,7 +56,7 @@ export default function Login() {
   };
 
   return (
-    <div className='login-container'>
+    <div className={style.login_container}>
       <Form onSubmit={handleSubmit(registerUser)}>
         {serverError && <div className='text-danger'>{serverError}</div>}
         {emailSent && <div className='text-success'>{emailSent}</div>}
@@ -71,11 +71,11 @@ export default function Login() {
           {errors.password && <div className='text-danger'>{errors.password.message}</div>}
         </FloatingLabel>
 
-        <Button type='submit' className='login-btn' disabled={isLoading}>
+        <Button type='submit' className={style.login_btn} disabled={isLoading}>
           {isLoading ? "Loading..." : "Login"}
         </Button>
 
-        <Button variant="link" className="login-btn" onClick={sendResetCode} disabled={isLoading}>
+        <Button variant="link" className={style.login_btn} onClick={sendResetCode} disabled={isLoading}>
           {isLoading ? "Sending..." : "Forgot Password"}
         </Button>
       </Form>

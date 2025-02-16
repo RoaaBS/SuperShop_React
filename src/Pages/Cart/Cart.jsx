@@ -3,9 +3,12 @@ import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import { Button } from 'react-bootstrap';
 import { FaRegTrashAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export default function Cart() {
   const [cart, setCart] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
   const deleteCart = async () => {
     try {
       const token = localStorage.getItem("userToken");
@@ -104,7 +107,9 @@ export default function Cart() {
       console.error("Error decreasing quantity:", error);
     }
   };
-
+  const handleOrder = () => {
+    navigate('/order', { state: { cart } });
+  };
   useEffect(() => {
     getCart();
   }, []);
@@ -146,6 +151,13 @@ export default function Cart() {
       </Table>
       <Button style={{ backgroundColor: "#030355", color: "#fff",borderColor:"#030355" }} onClick={() => deleteCart()}>
   Delete Cart
+</Button>
+<Button 
+  style={{ backgroundColor: "#030355", color: "#fff", borderColor: "#030355" }} 
+  className='ms-4' 
+  onClick={handleOrder}
+>
+  Order
 </Button>
 
     </div>

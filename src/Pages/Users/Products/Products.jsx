@@ -5,25 +5,39 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import  styles from './products.module.css';
 import Pro from '../../../assets/Pro.png'
-
+import ReactPaginate from 'react-paginate';
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const[CurrentPage,setCurrentPage]=useState(1); 
+  const[totalPage,setTotalPage]=useState(2);
+  const [productCount, setProductCount] = useState(0);
 
-  const getProducts = async () => {
+
+
+  const getProducts = async (currentPage = 1) => {
     try {
-      const { data } = await axios.get('https://ecommerce-node4.onrender.com/products?page=1&limit=10');
+      const { data } = await axios.get(
+        `https://ecommerce-node4.onrender.com/products?page=${currentPage}&limit=5`
+      );
       setProducts(data.products);
+      setProductCount(data.products.length); // Update product count
     } catch (error) {
       console.error(error);
     } finally {
       setIsLoading(false);
     }
   };
+  
+  const handlePageClick = (event) => {
+    const selectedPage = event.selected + 1; 
+    setCurrentPage(selectedPage);
+  };
+  
 
   useEffect(() => {
-    getProducts();
-  }, []);
+    getProducts(CurrentPage);
+  }, [CurrentPage]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -53,6 +67,29 @@ export default function Products() {
           </div>
         ))}
       </div>
+   
+      <ReactPaginate
+  breakLabel="..."
+  nextLabel="next >"
+  onPageChange={handlePageClick}
+  pageRangeDisplayed={4}
+  pageCount={totalPage}
+  previousLabel="< previous"
+  renderOnZeroPageCount={null}
+  containerClassName={styles.pagination}
+  pageClassName={styles.page_item}
+  pageLinkClassName={styles.page_link}
+  activeClassName={styles.active}
+  previousClassName={styles.prev_item}
+  previousLinkClassName={styles.prev_link}
+  nextClassName={styles.next_item}
+  nextLinkClassName={styles.next_link}
+  breakClassName={styles.break_item}
+  breakLinkClassName={styles.break_link}
+/>
+
+   
     </div>
+    
   );
 }
