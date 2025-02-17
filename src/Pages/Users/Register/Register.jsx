@@ -6,8 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast,Zoom } from 'react-toastify';
 import axios from 'axios';
-import './Register.css';
-import img from '../../../assets/image-product.svg';
+import style from '../Login/Login.module.css'
 
  export default function Register() {
   const [isLoading,setisLoading]=useState(false);
@@ -46,26 +45,28 @@ catch(error){
    
   }
    return (
-     <>
-      <img src={img} alt='product-img' className='login-img'/>
+     <div className={style.login_container}>
+  
      <Form onSubmit={handleSubmit(registerUser)}>
       {serverError?<div className='text-danger'>{serverError}</div>:null}
      <FloatingLabel controlId="floatingInput" label="User Name" className="mb-3">
         <Form.Control type="text" placeholder="" {...register("userName",{required:"user name is required"})} />
         {errors.userName?<div className='text-danger'>{errors.userName.message}</div>:null}</FloatingLabel>
-     <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+
+     <FloatingLabel controlId="floatingemail" label="Email address" className="mb-3">
         <Form.Control type="email" placeholder=""{...register("email",{required:"email is required"})} />
         {errors.email?<div className='text-danger'>{errors.email.message}</div>:null}</FloatingLabel>
+
       <FloatingLabel controlId="floatingPassword" label="Password">
         <Form.Control type="password" placeholder="" {...register("password",{required:"password is required"})} />
         {errors.password?<div className='text-danger'>{errors.password.message}</div>:null}
       </FloatingLabel>
-      <Button  type='submit' className='signup-btn'
+      <Button  type='submit' className={style.login_btn}
       disabled={isLoading}>
         {isLoading?"loading...":"Register..."}</Button>
 </Form>
 
-     </>
+     </div>
    )
  }
  

@@ -35,14 +35,7 @@ Form{
     background-color: rgb(171, 171, 170);
     border-color: bisque;
 }
-.login-img{
-    width: 80%;
-    height: min-content;
-    margin-left: 20%;
-}
-.form-control{
-    width: 100%;
-}
+
 h4{
     padding-left: 40%;
     padding-top: 20px;
@@ -51,8 +44,4 @@ h4{
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: xx-large;
 
-}
-.headerImage{
-    padding-left: 30%;
-    padding-bottom: 10px;
 }
