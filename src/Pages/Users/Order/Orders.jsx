@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-
+import { toast,Zoom } from 'react-toastify';
 export default function Orders() {
   const [isLoading, setIsLoading] = useState(false);
   const [order, setOrder] = useState(null);
@@ -19,7 +19,7 @@ export default function Orders() {
     try {
       const token = localStorage.getItem("userToken");
       const response = await axios.post(
-        "https://localhost:3000/order",
+        "https://ecommerce-node4.onrender.com/order",
         {
           couponName: data.couponName,
           address: data.address,
@@ -31,8 +31,20 @@ export default function Orders() {
           },
         }
       );
+      if (response.status === 201) {
+        toast.success('Order registered successfully', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Zoom,
+        });}
   
-      console.log("Order registered successfully:", response.data);
+     
       setOrder(response.data);
     } catch (error) {
       console.error("Order registration failed:", error);
