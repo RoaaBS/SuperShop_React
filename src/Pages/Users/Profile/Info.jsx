@@ -6,9 +6,13 @@ export default function Info() {
 
   return (
     <div>
-      <h2 className="p-4">
+      <h3 className="p-4 ms-5">
         {loading ? "Loading..." : `Name is: ${user?.userName}`}
-      </h2>
+      </h3>
+      <h3 className="p-4 ms-5">
+        {loading ? "Loading..." : `Email is: ${user?.email}`}
+      </h3>
+   
     </div>
   );
 }

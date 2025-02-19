@@ -52,14 +52,14 @@ if(isLoading)return
     <h2>loading...</h2>
 
   return (
-    <Form onSubmit={handleSubmit(updateImage)} encType='multipart/form-data'>
-      <Form.Group controlId="updateimg" className="mb-3">
-        <Form.Label>Update profile pic</Form.Label>
-        <Form.Control type="file" {...register('Image')} onChange={handlechange}/>
+    <Form onSubmit={handleSubmit(updateImage)} encType='multipart/form-data' className='ms-5'>
+      <Form.Group controlId="updateimg" className="mb-3 ms-5">
+        <Form.Label className='ms-5'>Update profile pic</Form.Label>
+        <Form.Control type="file"  {...register('Image')} onChange={handlechange}/>
       </Form.Group>
       {imagePreview?  <img src={imagePreview} width={200}/>:<img src={user?.Image?.secure_url} width={200}/>}
      
-      <Button type='submit'>Update</Button>
+      <Button type='submit' className='ms-5 mb-2'>Update</Button>
     </Form>
   )
 }

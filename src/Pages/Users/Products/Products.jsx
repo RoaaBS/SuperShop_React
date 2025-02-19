@@ -93,6 +93,7 @@ export default function Products() {
                 <Link to={`/products/${product._id}`} className={styles.btn}>
                   Details
                 </Link>
+           
               </Card.Body>
             </Card>
           </div>
