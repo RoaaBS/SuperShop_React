@@ -22,7 +22,7 @@ import { CartContext } from '../../../Components/User/context/cartContext';
         const response=await axios.get(`https://ecommerce-node4.onrender.com`)
         setReview([...review, { rating, comment }]);
       }catch(err){
-        console.log('Error:', error.response || error.message);
+        console.log('Error:', err.response || err.message);
         toast.error('Failed to add review', {
           position: 'top-right',
           autoClose: 5000,
@@ -165,16 +165,7 @@ import { CartContext } from '../../../Components/User/context/cartContext';
     </Card.Title>
     <Card.Title>Stock: {product.stock}</Card.Title>
     <Card.Title>Price After Discount: {product.finalPrice}</Card.Title>
-    {product.reviews && product.reviews.length > 0 ? (
-  product.reviews.slice(1, 2).map((review, index) => (
-    <div key={index}>
-      <Card.Title>Rating: {review.rating}</Card.Title>
-      <Card.Title>Comment: {review.comment}</Card.Title>    
-    </div>
-  ))
-) : (
-  <Card.Title>No reviews yet</Card.Title>
-)}
+
 
 <Form.Group className="mb-3" controlId="formBasicReview">
               <Form.Label>Rating</Form.Label>
@@ -200,8 +191,23 @@ import { CartContext } from '../../../Components/User/context/cartContext';
     <Button onClick={addtoCart} className={styles.btn}>
       Add to Cart
     </Button>
-  </Card.Body>
+    </Card.Body>
 </Card>
+<h3 className='mt-3'>Reviews and Comments</h3>
+    <Card className={styles.card}>
+            
+    {product.reviews && product.reviews.length > 0 ? (
+  product.reviews.slice(0, 10).map((review, index) => (
+    <div  className="d-flex ms-3 pl-3" key={index}>
+      <Card.Title className='ms-4'>Rating: {review.rating}</Card.Title>
+      <Card.Title className='ms-3'>Comment: {review.comment}</Card.Title>    
+    </div>
+  ))
+) : (
+  <Card.Title>No reviews yet</Card.Title>
+)}
+            </Card>
+
 
 
   </div>

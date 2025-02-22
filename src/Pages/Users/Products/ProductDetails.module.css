@@ -33,7 +33,9 @@ margin-bottom: 10px;
   background-color:rgb(249, 249, 247);
   color:rgb(25, 39, 196)
 }
-
+h3{
+  color:#1A1287
+}
   
   .cardBody {
     display: flex;
