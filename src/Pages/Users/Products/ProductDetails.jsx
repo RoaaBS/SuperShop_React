@@ -147,71 +147,78 @@ import { CartContext } from '../../../Components/User/context/cartContext';
         return <h2>Loading..</h2>;
       }
    return (
-    <div className={`d-flex justify-content-center align-items-center min-vh-100 text-xs`}>
+<div className={`container mt-4`}>
+  <div className="row d-flex align-items-start">
 
-    <div className="col-md-6 mb-4" key={product._id}>
-    <Card className={styles.card}>
-  <Card.Img
-    className={styles.cardImgTop}
-    variant="top"
-    src={product.mainImage?.secure_url}
-    alt={product.name}
-  />
-  <Card.Body className={styles.cardBody}>
-    <Card.Title>{product.name}</Card.Title>
-    <Card.Title>Price: {product.price}</Card.Title>
-    <Card.Title className={styles.discount}>
-      Discount: {product.discount}%
-    </Card.Title>
-    <Card.Title>Stock: {product.stock}</Card.Title>
-    <Card.Title>Price After Discount: {product.finalPrice}</Card.Title>
-
-
-<Form.Group className="mb-3" controlId="formBasicReview">
-              <Form.Label>Rating</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter rating (1-5)"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-                min="1"
-                max="5"
-              />
-              <Form.Label>Comment</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Add your review"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-              />
-            </Form.Group>
-            <Button onClick={addReview} className={styles.sub_btn}>
-              Submit
-            </Button>
-    <Button onClick={addtoCart} className={styles.btn}>
-      Add to Cart
-    </Button>
-    </Card.Body>
-</Card>
-<h3 className='mt-3'>Reviews and Comments</h3>
-    <Card className={styles.card}>
-            
-    {product.reviews && product.reviews.length > 0 ? (
-  product.reviews.slice(0, 10).map((review, index) => (
-    <div  className="d-flex ms-3 pl-3" key={index}>
-      <Card.Title className='ms-4'>Rating: {review.rating}</Card.Title>
-      <Card.Title className='ms-3'>Comment: {review.comment}</Card.Title>    
+    <div className="col-md-3">
+      <Card className={styles.card}>
+        <Card.Img
+          className={styles.cardImgTop}
+          variant="top"
+          src={product.mainImage?.secure_url}
+          alt={product.name}
+        />
+      </Card>
     </div>
-  ))
-) : (
-  <Card.Title>No reviews yet</Card.Title>
-)}
-            </Card>
 
 
+    <div className="col-md-7">
+      <Card className={styles.card}>
+        <Card.Body className={styles.cardBody}>
+          <Card.Title>{product.name}</Card.Title>
+          <Card.Title>Price: {product.price}</Card.Title>
+          <Card.Title className={styles.discount}>
+            Discount: {product.discount}%
+          </Card.Title>
+          <Card.Title>Stock: {product.stock}</Card.Title>
+          <Card.Title>Price After Discount: {product.finalPrice}</Card.Title>
 
+          {/* Review Form */}
+          <Form.Group className="mb-3" controlId="formBasicReview">
+            <Form.Label>Rating</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="Enter rating (1-5)"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+              min="1"
+              max="5"
+            />
+            <Form.Label>Comment</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Add your review"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+          </Form.Group>
+          <Button onClick={addReview} className={styles.sub_btn}>
+            Submit
+          </Button>
+          <Button onClick={addtoCart} className={styles.btn}>
+            Add to Cart
+          </Button>
+        </Card.Body>
+      </Card>
+    </div>
   </div>
-  </div>
+
+
+  <h3 className="mt-3">Reviews and Comments</h3>
+  <Card className={styles.card}>
+    {product.reviews && product.reviews.length > 0 ? (
+      product.reviews.slice(0, 10).map((review, index) => (
+        <div className="d-flex ms-3 pl-3" key={index}>
+          <Card.Title className="ms-4">Rating: {review.rating}</Card.Title>
+          <Card.Title className="ms-3">Comment: {review.comment}</Card.Title>
+        </div>
+      ))
+    ) : (
+      <Card.Title>No reviews yet</Card.Title>
+    )}
+  </Card>
+</div>
+
    )
  }
  

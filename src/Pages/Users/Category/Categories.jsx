@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './Category.module.css'; // Ensure the CSS file is correctly imported
+import styles from './Category.module.css';
 import img1 from '../../../assets/Ca.png';
 
 export default function Categories() {

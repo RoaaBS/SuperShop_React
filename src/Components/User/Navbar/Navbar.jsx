@@ -24,7 +24,7 @@ export default function CustomeNavbar() {
   return (
     <Navbar expand="lg" className={styles.NavbarBrand}>
       <Container>
-        <Navbar.Brand href="#home" className={styles.NavbarBrand}>Super Shop</Navbar.Brand>
+        <Navbar.Brand as={Link} to={'/'} className={styles.NavbarBrand}>Super Shop</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className='navbar-toggler collapsed'/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
     box-shadow: rgba(103, 103, 105, 0.3) 0px 19px 38px, rgba(105, 104, 103, 0.3) 0px 15px 12px;
     border-radius: 10px;
   }
@@ -12,7 +11,7 @@
 }
 .cardImgTop {
   width: 100%;
-  max-height: 250px; 
+  height: 100%;
   object-fit: contain;
   display: block;
   margin: auto;
@@ -23,9 +22,9 @@
   height: 50px;
 padding: 0;
 margin-bottom: 10px;
+
 }
  .btn{
-  
   background-color:rgb(29, 29, 141);
   color: aliceblue;
 }

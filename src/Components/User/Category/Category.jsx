@@ -1,13 +1,14 @@
- import React from 'react'
- import axios from 'axios';
-import  { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import styles from './Category.module.css'
- export default function Category() {
-    const [categories, setCategories] = useState([{}]);
+import styles from './Category.module.css';
+import { Link } from 'react-router-dom';
+
+export default function Category() {
+  const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const getCategories = async () => {
@@ -29,23 +30,24 @@ import styles from './Category.module.css'
     return <h2>Loading..</h2>;
   }
 
-   return (
-     
+  return (
     <Swiper
-    modules={[Navigation]}
+      modules={[Navigation]}
       spaceBetween={5}
       slidesPerView={3.5}
       navigation
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
     >
-      {categories.map(Category=>
-      <SwiperSlide key={Category._id}> <img src={Category.image.secure_url} className={styles.home}/></SwiperSlide>
-      )}
-     
- 
+      {categories.map((category) => (
+        <SwiperSlide key={category._id}>
+          <Link to={`/categories/${category._id}`}>
+            <img
+              src={category.image?.secure_url}
+              alt={category.name}
+              className={styles.home}
+            />
+          </Link>
+        </SwiperSlide>
+      ))}
     </Swiper>
-     
-   )
- }
- 
+  );
+}
