@@ -13,12 +13,12 @@ export default function Forgotpass() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Extract email from URL query parameters
+   
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const email = params.get('email');
         if (email) {
-            setValue('email', email); // Prefill email field
+            setValue('email', email); 
         }
     }, [location.search, setValue]);
 
