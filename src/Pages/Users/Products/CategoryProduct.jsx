@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import styles from './products.module.css'
 import img from '../../../assets/p.png'
+import { SpinnerCircular } from 'spinners-react';
 export default function CategoryProduct() {
     const {categoryId}=useParams();
     const [products, setProducts] = useState([{}]);
@@ -27,7 +28,11 @@ export default function CategoryProduct() {
     }, []);
   
     if (isLoading) {
-      return <h2>Loading..</h2>;
+      return (
+        <div className='d-flex justify-content-center align-item-center vh-100'>
+          <SpinnerCircular sixw={60} speed={100} thickness={100}  color='blue' secondaryColor='lightgray' />
+        </div>
+      )
     }
     if (products.length === 0) {
       return <h2 className='m-4'>No products available in this category.</h2>;

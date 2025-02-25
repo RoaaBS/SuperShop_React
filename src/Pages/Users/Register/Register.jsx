@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast,Zoom } from 'react-toastify';
 import axios from 'axios';
 import style from '../Login/Login.module.css'
-
+import { SpinnerCircular } from 'spinners-react';
  export default function Register() {
   const [isLoading,setisLoading]=useState(false);
   const[serverError,setServerError]=useState(null)
@@ -63,7 +63,9 @@ catch(error){
       </FloatingLabel>
       <Button  type='submit' className={style.login_btn}
       disabled={isLoading}>
-        {isLoading?"loading...":"Register..."}</Button>
+        {isLoading? <div className='d-flex justify-content-center align-item-center vh-100'>
+            <SpinnerCircular  size={60} speed={100} thickness={100} color="blue" secondaryColor="lightgray"/>
+          </div>:"Register..."}</Button>
 </Form>
 
      </div>

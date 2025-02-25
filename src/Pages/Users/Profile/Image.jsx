@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { UserContext } from '../../../Components/User/context/UserContext';
 import { useContext } from 'react';
 import axios from 'axios';
-
+import { SpinnerCircular } from 'spinners-react';
 export default function Image() {
 const {register,handleSubmit,formState:{errors}}=useForm();
 const {user,loading} =useContext(UserContext);
@@ -48,10 +48,15 @@ const handlechange=(event)=>{
     setImagePreview(URL.createObjectURL(file));
 console.log(file);
 }
-if(isLoading)return
-    <h2>loading...</h2>
+if(isLoading)
+return(<div className='d-flex justify-content-center align-item-center vh-100'>
+    <SpinnerCircular speed={100} size={60} thickness={100} color='blue' secondaryColor='lightgray' />
+
+</div>)
+   
 
   return (
+    <div className='profile-container'>
     <Form onSubmit={handleSubmit(updateImage)} encType='multipart/form-data' className='ms-5'>
       <Form.Group controlId="updateimg" className="mb-3 ms-5">
         <Form.Label className='ms-5'>Update profile pic</Form.Label>
@@ -61,5 +66,6 @@ if(isLoading)return
      
       <Button type='submit' className='ms-5 mb-2'>Update</Button>
     </Form>
+    </div>
   )
 }

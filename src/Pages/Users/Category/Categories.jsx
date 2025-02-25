@@ -1,10 +1,11 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './Category.module.css';
-import img1 from '../../../assets/Ca.png';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "./Category.module.css";
+import img1 from "../../../assets/Ca.png";
+import { SpinnerCircular } from "spinners-react";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
@@ -12,12 +13,12 @@ export default function Categories() {
 
   const getCategories = async () => {
     try {
-      const { data } = await axios.get('https://ecommerce-node4.onrender.com/categories');
+      const { data } = await axios.get("https://ecommerce-node4.onrender.com/categories");
       setCategories(data.categories);
     } catch (error) {
-      console.error('Error fetching categories:', error);
+      console.error("Error fetching categories:", error);
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); 
     }
   };
 
@@ -26,8 +27,13 @@ export default function Categories() {
   }, []);
 
   if (isLoading) {
-    return <h2 className={styles.loading}>Loading...</h2>;
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <SpinnerCircular size={60} thickness={100} speed={100} color="blue" secondaryColor="lightgray" />
+      </div>
+    );
   }
+
   return (
     <div className={`container min-vh-100 mt-4 ${styles.category}`}>
       <img src={img1} className={styles.headerImage} alt="Category Banner" />

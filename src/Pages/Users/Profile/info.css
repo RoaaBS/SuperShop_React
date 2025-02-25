@@ -1,17 +1,44 @@
-/* Ensure content fits properly on smaller screens */
-@media (max-width: 600px) {
-    .card {
-      padding: 10px;
-      margin-top: 10px;
-    }
-  
-    h3 {
-      font-size: 14px;
-    }
-  
-    .profile-image {
-      width: 120px;
-      height: 120px;
-    }
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  min-height: 100vh; 
+  padding: 20px;
+}
+
+
+.profile-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.table{
+  margin-left: 25px;
+}
+
+@media (max-width: 768px) {
+  .profile-image {
+    width: 120px;
+    height: 120px;
   }
-  
+}
+
+
+@media (max-width: 576px) {
+  .profile-container {
+    padding: 10px; 
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+
+

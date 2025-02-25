@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import styles from './Category.module.css';
 import { Link } from 'react-router-dom';
-
+import { SpinnerCircular } from 'spinners-react';
 export default function Category() {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +27,10 @@ export default function Category() {
   }, []);
 
   if (isLoading) {
-    return <h2>Loading..</h2>;
+    return( <div className='d-flex justify-content-center align-item-center vh-100'>
+    <SpinnerCircular speed={100} size={60} thickness={100} color='blue' secondaryColor='lightgray' />
+
+</div>)
   }
 
   return (

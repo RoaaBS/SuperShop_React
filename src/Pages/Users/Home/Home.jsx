@@ -7,12 +7,15 @@ import SuperShop from '../../../assets/SuperShop.png'
 import { FaGithub } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-
-
+import RollingGallery from './RollingGallery'
+import SwiperGallery from './SwiperGallery';
 export default function Home() {
+
   return (
     <div>
-<img src={img} style={{ width: '100vw',height:'40vw' }} className='mb-5' />
+      <div>
+      <SwiperGallery autoplay={true} pauseOnHover={true} />
+      </div>
       <Category/>
       <div className='bg-light h-100 mt-5 ' style={{color:'#030355'}}>
         <h4 className='m-auto d-flex text-center '>Welcome to Super Shop</h4>
@@ -22,6 +25,9 @@ export default function Home() {
         high-quality home and kitchen appliances,</b> as well as a fun collection of toys and
         games for all ages. Shop with us and enjoy a seamless shopping experience with great
          deals and top-notch customer service!</p>
+      </div>
+      <div className=' bg-light h-100 mt-5'>
+      <RollingGallery autoplay={true} pauseOnHover={true} />
       </div>
       <div className='bg-light h-100 mt-5 m-auto d-flex '>
         <div className='col-md-3'> 

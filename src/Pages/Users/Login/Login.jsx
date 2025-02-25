@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import style from'./Login.module.css';
-
+import { SpinnerCircular } from 'spinners-react';
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState(null);
@@ -72,7 +72,9 @@ export default function Login() {
         </FloatingLabel>
 
         <Button type='submit' className={style.login_btn} disabled={isLoading}>
-          {isLoading ? "Loading..." : "Login"}
+          {isLoading ?  <div className='d-flex justify-content-center align-item-center vh-100'>
+            <SpinnerCircular  size={60} speed={100} thickness={100} color="blue" secondaryColor="lightgray"/>
+          </div> : "Login"}
         </Button>
 
         <Button variant="link" className={style.login_btn} onClick={sendResetCode} disabled={isLoading}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
-
+import { SpinnerCircular } from 'spinners-react';
 
 export default function ViewOrders() {
   const [order, setOrder] = useState([]);
@@ -31,9 +31,12 @@ export default function ViewOrders() {
 
 
   return (
-    <div className='ms-5'>
+    <div className='ms-5 table'>
       {isLoading ? (
-        <p>Loading...</p>
+        <div className='d-flex justify-content-center align-item-center vh-100'>
+        <SpinnerCircular speed={100} size={60} thickness={100} color='blue' secondaryColor='lightgray' />
+    
+    </div>
       ) : (
         <Table striped bordered hover>
           <thead>

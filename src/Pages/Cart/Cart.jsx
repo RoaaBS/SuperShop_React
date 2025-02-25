@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import Table from 'react-bootstrap/Table';
 import { Button } from 'react-bootstrap';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../Components/User/context/cartContext';
+import { SpinnerCircular } from 'spinners-react';
 export default function Cart() {
   const [cart, setCart] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const {cartCount,setCartCount}=useContext(CartContext);
   const navigate = useNavigate();
   const deleteCart = async () => {
     try {
@@ -22,6 +25,7 @@ export default function Cart() {
         }
       );
       setCart([]); 
+      setCartCount(0);
     } catch (error) {
       console.error("Can't Delete Cart", error);
     } finally {
@@ -40,6 +44,7 @@ export default function Cart() {
         }
       });
       setCart([]);
+      setCartCount(prevCount => prevCount -1);
     }catch(error){
       console.log("can't remove item ",error)
     }finally{
@@ -80,6 +85,7 @@ export default function Cart() {
            return item;
       })
     });
+    setCartCount(prevCount => prevCount +1);
     } catch (error) {
       console.error("Error increasing quantity:", error);
     }
@@ -102,7 +108,8 @@ export default function Cart() {
           return item;
             
     })
-  });
+  }
+  );    setCartCount(prevCount => prevCount -1);
     } catch (error) {
       console.error("Error decreasing quantity:", error);
     }
@@ -115,7 +122,10 @@ export default function Cart() {
   }, []);
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return ( <div className='d-flex justify-content-center align-item-center vh-100'>
+    <SpinnerCircular speed={100} size={60} thickness={100} color='blue' secondaryColor='lightgray' />
+
+</div>)
   }
 
   return (

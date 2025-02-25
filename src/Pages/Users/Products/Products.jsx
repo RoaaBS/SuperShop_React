@@ -10,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import { SpinnerCircular } from 'spinners-react';
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,11 +18,12 @@ export default function Products() {
   const [totalPage, setTotalPage] = useState(2);
   const [productCount, setProductCount] = useState(0);
   const [search, setSearch] = useState(""); 
+  const [sort,setSort]=useState("")
 
-  const getProducts = async (currentPage = 1, search = "") => {
+  const getProducts = async (currentPage = 1, search = "",sort="asc") => {
     try {
       const { data } = await axios.get(
-        `https://ecommerce-node4.onrender.com/products?page=${currentPage}&limit=5&search=${search}`
+        `https://ecommerce-node4.onrender.com/products?page=${currentPage}&limit=5&search=${search}&sort=${sort}`
       );
       setProducts(data.products);
       setProductCount(data.products.length); // Update product count
@@ -44,15 +45,19 @@ export default function Products() {
 
   const handleSearchSubmit = () => {
     setCurrentPage(1); 
-    getProducts(1, search); // Get filtered products
+    getProducts(1, search); 
   };
 
   useEffect(() => {
-    getProducts(CurrentPage, search); 
-  }, [CurrentPage, search]); 
+    getProducts(CurrentPage, search,sort); 
+  }, [CurrentPage, search,sort]); 
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return (
+    <div className='d-flex justify-content-center align-items-center vh-100'>
+       <SpinnerCircular size={60} thickness={100} speed={100} color="blue" secondaryColor="lightgray"/>;
+    </div>)
+   
   }
 
   return (
@@ -63,7 +68,7 @@ export default function Products() {
             type="text"
             placeholder="Search"
             value={search} 
-            onChange={handleSearchChange} // Handle input changes
+            onChange={handleSearchChange} 
             className="mr-sm-2"
           />
         </Col>
@@ -75,7 +80,15 @@ export default function Products() {
             Submit
           </Button>
         </Col>
+        <Form.Group as={Col} xs="auto">
+  <Form.Select value={sort} onChange={(e) => setSort(e.target.value)}>
+    <option value="name-asc">Name (A-Z)</option>
+    <option value="name-desc">Name (Z-A)</option>
+  </Form.Select>
+</Form.Group>
       </Row>
+
+
 
       <img src={Pro} className={styles.headerImage} />
       <div className="row">

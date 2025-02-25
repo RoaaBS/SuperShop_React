@@ -8,9 +8,10 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { toast,Zoom } from 'react-toastify';
 import { CartContext } from '../../../Components/User/context/cartContext';
+import { SpinnerCircular } from 'spinners-react';
  export default function ProductDetails() {
   const navigate =useNavigate();
-  const {cartCount,setcartCount}=useContext(CartContext);
+  const {cartCount,setCartCount}=useContext(CartContext);
     const {productId}=useParams();
     const [product, setProduct] = useState({});
     const[review,setReview]=useState([])
@@ -118,8 +119,9 @@ import { CartContext } from '../../../Components/User/context/cartContext';
               theme: "dark",
               transition: Zoom,
             });
-            setcartCount(cartCount+1);
-            navigate('/Cart');
+            
+            setCartCount(prevCount => prevCount + 1);
+            // navigate('/Cart');
           }
       
         } catch (error) {
@@ -144,7 +146,11 @@ import { CartContext } from '../../../Components/User/context/cartContext';
       }, []);
     
       if (isLoading) {
-        return <h2>Loading..</h2>;
+        return (
+          <div className='d-flex justify-content-center align-item-center vh-100'>
+            <SpinnerCircular  size={60} speed={100} thickness={100} color="blue" secondaryColor="lightgray"/>
+          </div>
+        )
       }
    return (
 <div className={`container mt-4`}>
