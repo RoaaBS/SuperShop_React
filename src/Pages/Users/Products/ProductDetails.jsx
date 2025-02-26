@@ -120,7 +120,7 @@ import { SpinnerCircular } from 'spinners-react';
               transition: Zoom,
             });
             
-            setCartCount(prevCount => prevCount + 1);
+            setCartCount(cartCount +1 );
             // navigate('/Cart');
           }
       

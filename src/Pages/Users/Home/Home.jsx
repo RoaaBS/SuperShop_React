@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div>
       <div>
-      <SwiperGallery autoplay={true} pauseOnHover={true} />
+      <SwiperGallery autoplay={true} />
       </div>
       <Category/>
       <div className='bg-light h-100 mt-5 ' style={{color:'#030355'}}>

@@ -56,15 +56,15 @@ export default function Orders() {
   
 
   return (
-    <div>
+    <div className='d-flex justify-content-center align-items-center'>
     {cart.map((item, index) => (
-  <img key={item.id || index} src={item.details.mainImage.secure_url} width="100px" height="110px" alt={item.details.name} className='pl-4' 
+  <img key={item.id || index} src={item.details.mainImage.secure_url} width="150px" height="300px" alt={item.details.name} className='pl-4' 
   />
 ))}
 
   
 
-      <Form onSubmit={handleSubmit(registerOrder)}>
+      <Form onSubmit={handleSubmit(registerOrder)} className='ms-5'>
         <FloatingLabel controlId="floatingInput" label="Coupon Name" className="mb-3 w-75 ms-auto me-auto ">
           <Form.Control {...register("couponName", { required: false })} type="text" placeholder="Coupon Name" />
           {errors.couponName && <p className="text-danger">Coupon name is required</p>}

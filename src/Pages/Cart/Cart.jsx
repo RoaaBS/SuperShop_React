@@ -43,8 +43,8 @@ export default function Cart() {
           Authorization:`Tariq__${token}`,
         }
       });
-      setCart([]);
-      setCartCount(prevCount => prevCount -1);
+      setCart((prevCart) => prevCart.filter((item) => item.productId !== productId));
+    setCartCount((prevCount) => Math.max(prevCount - 1, 0));
     }catch(error){
       console.log("can't remove item ",error)
     }finally{
@@ -77,15 +77,15 @@ export default function Cart() {
         { headers: { Authorization: `Tariq__${token}` } }
       );
 
-      setCart(prevCart =>{
-        return prevCart.map(item =>{
+      setCart(cartCount =>{
+        return cartCount.map(item =>{
           if(item.productId == productId){
         return { ...item, quantity: item.quantity + 1 };
           } 
            return item;
       })
     });
-    setCartCount(prevCount => prevCount +1);
+    setCartCount(cartCount  +1);
     } catch (error) {
       console.error("Error increasing quantity:", error);
     }
@@ -100,8 +100,8 @@ export default function Cart() {
         { headers: { Authorization: `Tariq__${token}` } }
       );
 
-      setCart(prevCart =>{
-        return prevCart.map(item =>{
+      setCart(cartCount =>{
+        return cartCount.map(item =>{
           if (item.productId == productId  ){
             return { ...item, quantity: item.quantity - 1 }
           }
@@ -109,7 +109,7 @@ export default function Cart() {
             
     })
   }
-  );    setCartCount(prevCount => prevCount -1);
+  );    setCartCount(cartCount  -1);
     } catch (error) {
       console.error("Error decreasing quantity:", error);
     }
